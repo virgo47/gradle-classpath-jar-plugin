@@ -20,7 +20,7 @@ class ManifestClasspathPluginTest extends Specification {
 
     void setup() {
         project = ProjectBuilder.builder().withProjectDir(testProjectDir.root).build()
-        project.pluginManager.apply "com.github.ManifestClasspath"
+        project.pluginManager.apply "ua.eshepelyuk.ManifestClasspath"
         project.pluginManager.apply 'java'
 
         FileUtils.copyURLToFile(getClass().getResource("/SampleMain.class"), new File(project.buildDir, "SampleMain.class"))
