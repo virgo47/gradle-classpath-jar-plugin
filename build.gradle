@@ -1,40 +1,20 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-
-    dependencies {
-        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.9.0"
-        classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
-    }
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish'
 }
 
-apply plugin: 'groovy'
-apply plugin: 'maven-publish'
-apply plugin: 'java-gradle-plugin'
-apply plugin: 'eclipse'
-apply plugin: 'com.gradle.plugin-publish'
-
-group = 'com.github.viswaramamoorthy'
-version = '0.1.0-RELEASE'
+group = 'ua.eshepelyuk'
+version = '1.0.0'
 
 sourceCompatibility = 1.8
-
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Util Plugins', 'Implementation-Version': version
-    }
-}
 
 repositories {
     jcenter()
 }
 
 dependencies {
-    compile gradleApi()
     testCompile gradleTestKit()
     testCompile 'commons-io:commons-io:2.5'
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4') {
@@ -45,21 +25,21 @@ dependencies {
 gradlePlugin {
     plugins {
         manifestClasspathPlugin {
-            id = 'com.github.ManifestClasspath'
+            id = 'ua.eshepelyuk.ManifestClasspath'
             implementationClass = "vr.plugin.ManifestClasspathPlugin"
         }
     }
 }
 
 pluginBundle {
-    website = 'http://www.gradle.org/'
-    vcsUrl = 'https://github.com/gradle/gradle'
-    description = 'Fix for windows gradle long classpath issue. Fixes JavaExec/Test tasks that error out with message "CreateProcess error=206, The filename or extension is too long"'
-    tags = ['classpath-issue', 'windows-gradle-long-classpath', 'manifestclasspath-plugin', 'javaexec-task', 'CreateProcess error=206']
+    website = 'https://github.com/eshepelyuk/gradle-util-plugins'
+    vcsUrl = 'https://github.com/eshepelyuk/gradle-util-plugins'
+    description = 'Fix for Windows Gradle long classpath issue. Fixes JavaExec/Test tasks that error with message "CreateProcess error=206, The filename or extension is too long"'
+    tags = ['classpath', 'windows', 'manifest', 'javaexec', 'exec', 'CreateProcess', 'error=206']
 
     plugins {
         manifestClasspathPlugin {
-            id = 'com.github.ManifestClasspath'
+            id = 'ua.eshepelyuk.ManifestClasspath'
             displayName = 'Gradle Manifest Classpath plugin'
         }
     }
