@@ -39,6 +39,11 @@ TODO: I should have added test for this but right now it's beyond my Gradle skil
 Also it's not possible to upgrade from Gradle 4.7 to 4.8 and higher, as it breaks half the tests.
 See: https://discuss.gradle.org/t/plugin-tests-using-project-tasks-test-worked-in-4-7-but-fail-with-4-8/29340?u=virgo47
 
+== Version Compatibility
+
+* Gradle 4.7, does NOT work with 4.8 or higher (failing test).
+* Java 8/JDK 1.8.
+
 == Installation
 
 Follow the steps described at https://plugins.gradle.org/plugin/com.virgo47.ClasspathJar[Gradle Plugin Portal page].
