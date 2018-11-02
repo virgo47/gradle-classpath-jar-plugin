@@ -3,7 +3,7 @@
 :pluginVersion: 1.0.0
 :toc: macro
 
-image:https://api.travis-ci.org/eshepelyuk/gradle-classpath-jar-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/eshepelyuk/gradle-classpath-jar-plugin"]
+image:https://api.travis-ci.org/virgo47/gradle-classpath-jar-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/virgo47/gradle-classpath-jar-plugin"]
 
 toc::[]
 
