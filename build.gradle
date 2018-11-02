@@ -21,23 +21,23 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        manifestClasspathPlugin {
-            id = 'ua.eshepelyuk.ManifestClasspath'
-            implementationClass = "vr.plugin.ManifestClasspathPlugin"
+        classpathJarPlugin {
+            id = 'com.virgo47.ClasspathJar'
+            implementationClass = "com.virgo47.gradle.cpjar.plugin.ClasspathJarPlugin"
         }
     }
 }
 
 pluginBundle {
-    website = 'https://github.com/eshepelyuk/gradle-util-plugins'
-    vcsUrl = 'https://github.com/eshepelyuk/gradle-util-plugins'
-    description = 'Fix for Windows Gradle long classpath issue. Fixes JavaExec/Test tasks that error with message "CreateProcess error=206, The filename or extension is too long"'
-    tags = ['classpath', 'windows', 'manifest', 'javaexec', 'exec', 'CreateProcess', 'error=206']
+    website = 'https://github.com/virgo47/gradle-classpath-jar-plugin'
+    vcsUrl = 'https://github.com/virgo47/gradle-classpath-jar-plugin'
+    description = 'Fix for Windows long classpath issue. Fixes JavaExec/Test tasks that error with message: "CreateProcess error=206, The filename or extension is too long"'
+    tags = ['classpath', 'windows', 'jar', 'manifest', 'javaexec', 'exec', 'CreateProcess', 'error=206']
 
     plugins {
-        manifestClasspathPlugin {
-            id = 'ua.eshepelyuk.ManifestClasspath'
-            displayName = 'Gradle Manifest Classpath plugin'
+        classpathJarPlugin {
+            id = 'com.virgo47.ClasspathJar'
+            displayName = 'Gradle Classpath JAR plugin'
         }
     }
 }

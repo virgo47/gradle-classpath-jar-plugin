@@ -1,24 +1,27 @@
-= gradle-util-plugins
-:pluginId: ua.eshepelyuk.ManifestClasspath
+= gradle-classpath-jar-plugin
+:pluginId: com.virgo47.ClasspathJar
 :pluginVersion: 1.0.0
 :toc: macro
 
-image:https://api.travis-ci.org/eshepelyuk/gradle-util-plugins.svg?branch=master["Build Status", link="https://travis-ci.org/eshepelyuk/gradle-util-plugins"]
+image:https://api.travis-ci.org/eshepelyuk/gradle-classpath-jar-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/eshepelyuk/gradle-classpath-jar-plugin"]
 
 toc::[]
 
 == Overview
 
-When classpath for a Gradle `JavaExec` or `Test` task is long, Windows command executions give error because of limitation to command line length greater than 32K.
+When classpath for a Gradle `JavaExec` or `Test` task is long, Windows command executions give
+error because of limitation to command line length greater than 32K.
 
-With a number of classpath dependencies in a large project, typically JavaExec Gradle task fails with error "The filename or extension is too long" and this would be a stopping error. To solve this issue, use ManifestClasspath plugin.
+With a number of classpath dependencies in a large project, typically JavaExec Gradle task
+fails with error "The filename or extension is too long" and this would be a stopping error.
+To solve this issue, use ClasspathJar plugin.
 
-`ManifestClasspath` plugin creates a manifest jar for jar files in the classpath
-of every https://docs.gradle.org/current/javadoc/org/gradle/process/JavaForkOptions.html[JavaForkOptions] task and sets the classpath with manifest jar.
+`ClasspathJar` plugin creates a classpath jar for jar files in the classpath
+of every https://docs.gradle.org/current/javadoc/org/gradle/process/JavaForkOptions.html[JavaForkOptions] task and sets the classpath with classpath jar.
 This includes `JavaExec`, `Test` and other similar tasks.
 
 == Installation
 
-Follow the steps described at https://plugins.gradle.org/plugin/ua.eshepelyuk.ManifestClasspath[Gradle Plugin Portal page].
+Follow the steps described at https://plugins.gradle.org/plugin/com.virgo47.ClasspathJar[Gradle Plugin Portal page].
 
 

@@ -1,12 +1,12 @@
-package vr.listener
+package com.virgo47.gradle.cpjar.listener
 
 import org.gradle.api.Task
 import org.gradle.api.execution.TaskActionListener
 import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
 import org.gradle.process.JavaForkOptions
-import vr.plugin.ManifestClasspathPluginExtension
-import vr.util.ManifestUtil
+import com.virgo47.gradle.cpjar.plugin.ClasspathJarPluginExtension
+import com.virgo47.gradle.cpjar.util.ManifestUtil
 
 /**
  *
@@ -18,7 +18,7 @@ import vr.util.ManifestUtil
  */
 class JavaExecActionListener implements TaskActionListener {
 
-    private ManifestClasspathPluginExtension extension
+    private ClasspathJarPluginExtension extension
 
     static final Logger LOG = Logging.getLogger(JavaExecActionListener)
     static final String JAR_FOLDER = "mfjars"
@@ -28,15 +28,15 @@ class JavaExecActionListener implements TaskActionListener {
      * Action listener that gets invoked before Gradle task executed
      */
     void beforeActions(Task task) {
-        if (task instanceof JavaForkOptions && extension.shouldApplyManifestJar()) {
+        if (task instanceof JavaForkOptions && extension.shouldApplyClasspathJar()) {
             JavaForkOptions javaForkOptions = (JavaForkOptions) task
             LOG.info("Updating classpath to use jar file manifest for task: ${task.name}")
 
-            def jarFile = new File(new File(task.project.buildDir, JAR_FOLDER), "${task.name}_ManifestJar.jar")
+            def jarFile = new File(new File(task.project.buildDir, JAR_FOLDER), "${task.name}_ClasspathJar.jar")
             LOG.info("Executing Jar preparation action to create ${jarFile.absolutePath}")
-            ManifestUtil.prepareManifestJar(jarFile, javaForkOptions.classpath)
+            ManifestUtil.prepareClasspathJar(jarFile, javaForkOptions.classpath)
 
-            //Set manifest jar
+            // Set classpath jar
             javaForkOptions.setClasspath(task.project.files(jarFile.absolutePath))
             LOG.info("Added file ${jarFile.absolutePath} to classpath for task: ${task.name}")
         }

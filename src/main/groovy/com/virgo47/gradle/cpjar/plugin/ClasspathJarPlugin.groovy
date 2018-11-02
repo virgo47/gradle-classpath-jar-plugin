@@ -1,17 +1,18 @@
-package vr.plugin
+package com.virgo47.gradle.cpjar.plugin
 
+import com.virgo47.gradle.cpjar.listener.JavaExecActionListener
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import vr.listener.JavaExecActionListener
 
 /**
  * Adds JavaExec listener to Gradle project
  * @author Viswa Ramamoorthy
  */
-class ManifestClasspathPlugin implements Plugin<Project> {
+class ClasspathJarPlugin implements Plugin<Project> {
+
     @Override
     public void apply(Project project) {
-        def ext = project.extensions.create("ManifestClasspath", ManifestClasspathPluginExtension)
+        def ext = project.extensions.create("ClasspathJar", ClasspathJarPluginExtension)
         project.gradle.addListener(new JavaExecActionListener(extension: ext))
     }
 }
