@@ -20,8 +20,25 @@ To solve this issue, use ClasspathJar plugin.
 of every https://docs.gradle.org/current/javadoc/org/gradle/process/JavaForkOptions.html[JavaForkOptions] task and sets the classpath with classpath jar.
 This includes `JavaExec`, `Test` and other similar tasks.
 
+== History
+
+My story started with the problem, followed with https://virgo47.wordpress.com/2018/09/14/classpath-too-long-with-spring-boot-and-gradle/[a blog post].
+Then I found a plugin only to discover it had a bug that stays hidden if you don't use spaces in path.
+
+This plugin is clone of https://github.com/eshepelyuk/gradle-util-plugins which itself is clone
+of other "gradle-util-plugins".
+
+My version uses `toURI()` instead of `toURL()` to process classpath items which should fix
+file paths with spaces.
+Original repo didn't have Issues tab, so I couldn't report it easily.
+I also wanted to start with Gradle plugins and this one is as good as any other for that
+plus I can scratch my own itch.
+
+TODO: I should have added test for this but right now it's beyond my Gradle skill.
+
+Also it's not possible to upgrade from Gradle 4.7 to 4.8 and higher, as it breaks half the tests.
+See: https://discuss.gradle.org/t/plugin-tests-using-project-tasks-test-worked-in-4-7-but-fail-with-4-8/29340?u=virgo47
+
 == Installation
 
 Follow the steps described at https://plugins.gradle.org/plugin/com.virgo47.ClasspathJar[Gradle Plugin Portal page].
-
-
